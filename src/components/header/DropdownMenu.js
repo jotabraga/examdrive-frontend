@@ -7,30 +7,29 @@ export default function DropdownMenu({isDropped, showDropdown}){
 
         <MenuContainer isEnabled={isDropped} onClick={showDropdown}>
             <StyledMenu >
-            <Link to="/disciplinas"><h2>Disciplinas</h2></Link>
-            <Link to="/professores"><h2>Professores</h2></Link>
-            <Link to="/periodos"><h2>Periodos</h2></Link>
+                <Link to="/subjects"><h2>Disciplinas</h2></Link>
+                <Link to="/professors"><h2>Professores</h2></Link>
+                <Link to="/periods"><h2>Períodos</h2></Link>
             </StyledMenu>
         </MenuContainer>
 
     );
 }
-
 const MenuContainer = styled.div`
     display: ${props => props.isEnabled ? "block" : "none"};
     position: fixed;
-    top: 72px;
+    top: 65px;
     left: 0;
     background: transparent;
     width: 100vw;
     height: auto;
+    z-index: 10;
 `
-
 const StyledMenu = styled.div`
     position: absolute;
     right: 0;
     width: 100vw;
-    height: 110px;
+    height: 120px;
     border-radius: 0 0 8px 8px;
     display: flex;
     align-items: center;
@@ -41,4 +40,7 @@ const StyledMenu = styled.div`
     font-family: "Lato";
     font-size: 20px;
     font-weight: bold;
+    h2: hover{
+        color: #000;
+    }
 `
