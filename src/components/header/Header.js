@@ -27,11 +27,19 @@ export default function Header(){
 const Trademark = styled.img`
     width: 40px;
     height: auto;
+
+    @media (max-width: 611px){
+        width: 30px;
+    }
 `
 const Title = styled.h1`
   color: #fff;
   font-size: 35px;
   font-family: "Passion One";
+
+  @media (max-width: 611px){
+    font-size: 25px;
+}
 `;
 
 const StyledHeader = styled.div`
@@ -47,4 +55,8 @@ const StyledHeader = styled.div`
     background-color: #ef5798;
     color: #fff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.09);     
+    @media (max-width: 611px){
+        z-index:5;
+        height: 60px;
+    }
 `

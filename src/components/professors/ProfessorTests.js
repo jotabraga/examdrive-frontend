@@ -1,21 +1,16 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export default function DataInfo(props){
+export default function SubjectTests(props){
 
-    const {id, name, period} = props;
+    const {id, name} = props;
 
     return(
 
-        <Link to={`/subject-tests/${id}`}>
+        <Link to={`/professor-tests/${id}`}>
             <InfoBox>
-                <TestRow>
-                    <div>
-                        <h1>{name}</h1>
-                    </div>
-                    <div>
-                        <h1>{period}</h1>
-                    </div>
+                <TestRow>                    
+                    <h2>{name}</h2>                      
                 </TestRow>
             </InfoBox>
         </Link> 
@@ -25,7 +20,7 @@ export default function DataInfo(props){
 const InfoBox = styled.div`
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 `;
 
 const TestRow = styled.div`
@@ -34,15 +29,13 @@ const TestRow = styled.div`
     opacity: 0.6;
     margin-top: 4px;
     border-radius: 5px;
-    h1{
+    h2{
         color: #000;
-    }
-    div{
-        width:auto;
+        font-size: 18px;
+        text-align: center;
         line-height: 40px;
         height: 40px;
         margin-left: 10px;
-        margin-right: 10px;
-        min-width: 35px;
+        margin-right: 30px;
     }
 `;

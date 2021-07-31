@@ -15,6 +15,10 @@ const MainContainer = styled.div`
     padding-top: 80px;
     background: rgb(238,174,202);
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+
+    @media (max-width: 611px) {
+        padding-top: 40px;
+    }
 `;
 
 const Content = styled.div`
@@ -24,9 +28,6 @@ const Content = styled.div`
     justify-content: center;
     margin-top: 60px;
 
-    @media (max-width: 938px) {
-        width: 611px;
-    }
     @media (max-width: 611px) {
         width: 100vw;
     }

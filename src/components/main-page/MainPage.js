@@ -54,6 +54,12 @@ const TestsOptions = styled.div`
     margin-top: 30px;
     justify-content: space-evenly;
     align-items: center;
+
+    @media (max-width: 611px){
+        margin-top: 0;
+        flex-direction: column;
+        justify-content: center;
+    }
 `;
 
 const MainContainer = styled.div`
@@ -79,6 +85,10 @@ const PageServices = styled.div`
         font-size: 27px;
         margin-bottom: 15px;
         font-family: "Passion One";
+    }
+    @media (max-width: 611px){
+        margin-top: 70px;
+        height: 220px;
     }
 `;
 

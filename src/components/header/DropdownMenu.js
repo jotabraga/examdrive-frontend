@@ -24,6 +24,10 @@ const MenuContainer = styled.div`
     width: 100vw;
     height: auto;
     z-index: 10;
+
+    @media (max-width: 611px){
+        top: 40px;
+    }
 `
 const StyledMenu = styled.div`
     position: absolute;

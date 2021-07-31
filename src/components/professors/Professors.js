@@ -1,15 +1,20 @@
 import Header from "../header/Header";
 import styled from "styled-components";
-import PageContainer from "../PageContainer/PageContainer";
-import DataInfo from "../DataInfo/DataInfo";
+import PageContainer from "../page-container/PageContainer";
+import ProfessorTests from "./ProfessorTests";
+
 
 export default function SubjectsPage(){
 
-    const subjects = [
-        {"id":1, "name":"Calculo","period":1},
-        {"id":2, "name":"Fisica","period":2},
-        {"id":3, "name":"Dinamica","period":1},
-        {"id":4, "name":"Magnetismo","period":4}
+    const professors = [
+        {"id":1, "name":"Carlos Prado"},
+        {"id":2, "name":"Paulo Oliveira"},
+        {"id":3, "name":"Cesar Augusto"},
+        {"id":4, "name":"Sandra Braga"},
+        {"id":5, "name":"Pedro Sampaio"},
+        {"id":6, "name":"Cassio Fukujima"},
+        {"id":7, "name":"Nagato Sato"},
+        {"id":8, "name":"Lucio Filho"}
     ]
 
     return(
@@ -18,27 +23,23 @@ export default function SubjectsPage(){
 
             <PageContainer>
        
-                {subjects.length === 0 ? (
-                    <NoSubjects>Erro ao carregar as provas, tente novamente!</NoSubjects>
+                {(professors.length === 0 || professors === null) ? (
+                    <NoProfessors>Erro ao carregar os professores, tente novamente!</NoProfessors>
                 ) : (
 
                     <ContentBox>
                         <div>
-                            <h1>Disciplinas</h1>
-                            <h1>Período</h1>
+                            <h1>Professores</h1>
                         </div>
 
-
-
-                        {subjects.map((subject) => (
-                            <DataInfo
+                        {professors.map((subject) => (
+                            <ProfessorTests
                                 key={subject.id}
                                 name={subject.name}
-                                period={subject.period}
+                                id={subject.id}
                             />
                         ))}
                     </ContentBox>
-
                 )}
                 
             </PageContainer>           
@@ -48,14 +49,14 @@ export default function SubjectsPage(){
     );
 }
 
-const NoSubjects = styled.h1` 
+const NoProfessors = styled.h1` 
     font-family: "Lato";
     font-size: 30px;
-    color: #fff;
+    color: #000;
 `
 
 const ContentBox = styled.div`
-    width: 60%;
+    width: 50%;
     padding:20px;
     height: auto;
     background: #000;
@@ -68,7 +69,7 @@ const ContentBox = styled.div`
     div{
         width: 100%;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
     }
     h1{
         color: #fff;
