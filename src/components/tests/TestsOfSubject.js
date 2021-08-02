@@ -1,15 +1,15 @@
 import Header from "../header/Header";
 import styled from "styled-components";
 import PageContainer from "../page-container/PageContainer";
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { API } from "../config/api";
+// import { useParams } from "react-router-dom";
+// import { useEffect, useState } from "react";
+// import axios from "axios";
+// import { API } from "../config/api";
 import TestInfo from "./TestInfo";
 
 export default function TestsOfSubject(){
 
-    const { id } = useParams();
+    // const { id } = useParams();
     // const [tests, setTests] = useState([]);
 
     // useEffect(() =>{
@@ -64,9 +64,6 @@ export default function TestsOfSubject(){
             "period": "1 ano"
         }
     }];
-
-
-
 
     return(
         <div>
