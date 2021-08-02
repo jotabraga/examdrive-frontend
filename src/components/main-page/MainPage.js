@@ -72,11 +72,11 @@ const MainContainer = styled.div`
 
 const PageServices = styled.div` 
     width: 300px;
-    height: 300px;
+    height: 250px;
     background: #000;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     opacity: 0.92;
     border-radius: 8px;
@@ -103,6 +103,7 @@ const ViewTest = styled.button`
     background: #0F0F14;
     border-radius: 8px;
     border: 0;
+    border: 0.2px solid #FA4098;
     box-sizing: border-box;
     padding: 18px 60px;
     -webkit-transition: all 0.5s;

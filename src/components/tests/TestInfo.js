@@ -3,17 +3,19 @@ import styled from "styled-components";
 
 export default function SubjectTests(props){
 
-    const {id, name} = props;
+    const { professor, link, category, subject} = props;
 
     return(
-
-        <Link to={`/professor-tests/${id}`}>
+ 
             <InfoBox>
-                <TestRow>                    
-                    <h2>{name}</h2>                      
+
+                <TestRow href={link}>                    
+                    <h2>{subject}</h2> 
+                    <h2>{professor}</h2>   
+                    <h2>{category}</h2>                   
                 </TestRow>
             </InfoBox>
-        </Link> 
+    
     );
 }
 
@@ -23,8 +25,10 @@ const InfoBox = styled.div`
     justify-content: center;
 `;
 
-const TestRow = styled.div`
+const TestRow = styled.a`
     width: 100%;
+    display: flex;
+    justify-content: space-between;
     background: #fff;
     opacity: 0.6;
     margin-top: 4px;

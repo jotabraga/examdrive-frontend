@@ -1,10 +1,10 @@
 import Header from "../header/Header";
 import styled from "styled-components";
 import PageContainer from "../page-container/PageContainer";
-import ProfessorTests from "./ProfessorTests";
+import ProfessorTests from "./ProfessorInfo";
 
 
-export default function SubjectsPage(){
+export default function RegisteredProfessors(){
 
     const professors = [
         {"id":1, "name":"Carlos Prado"},

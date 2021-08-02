@@ -2,7 +2,8 @@ import styled from "styled-components";
 import Logotype from "../../assets/Logotype.png"; 
 import DropdownMenu from "./DropdownMenu";
 import { useState } from "react";
-import {BsList} from "react-icons/bs";
+import { Link } from "react-router-dom";
+import { BsList } from "react-icons/bs";
 
 export default function Header(){
 
@@ -15,10 +16,17 @@ export default function Header(){
     return (
         <>
             <StyledHeader>
-                <Trademark src={Logotype} />
-                <Title>Driven Repository</Title>
+                <Link to={"/"}>
+                    <Trademark src={Logotype} />
+                </Link>
+
+                <Link to={"/"}>
+                    <Title>Driven Repository</Title>
+                </Link>
+
                 <BsList fontSize="30px"  onClick={showDropdown} />
             </StyledHeader>
+            
             <DropdownMenu isDropped={isDropped} showDropdown={showDropdown} />
         </>
     );
@@ -27,6 +35,7 @@ export default function Header(){
 const Trademark = styled.img`
     width: 40px;
     height: auto;
+    border: none;
 
     @media (max-width: 611px){
         width: 30px;

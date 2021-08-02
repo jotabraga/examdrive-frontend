@@ -9,7 +9,7 @@ export default function DropdownMenu({isDropped, showDropdown}){
             <StyledMenu >
                 <Link to="/subjects"><h2>Disciplinas</h2></Link>
                 <Link to="/professors"><h2>Professores</h2></Link>
-                <Link to="/periods"><h2>Períodos</h2></Link>
+                <Link to="/mission"><h2>Missão</h2></Link>
             </StyledMenu>
         </MenuContainer>
 
