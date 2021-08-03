@@ -2,19 +2,12 @@ import Header from "../header/Header";
 import styled from "styled-components";
 import PageContainer from "../page-container/PageContainer";
 import SubjectTests from "./SubjectTests";
+import SubjectsContext from "../contexts/SubjectsContext";
+import { useContext } from "react";
 
 export default function SubjectsPage(){
 
-    const subjects = [
-        {"id":1, "name":"Calculo","period":1},
-        {"id":2, "name":"Dinamica","period":2},
-        {"id":3, "name":"Estatistica","period":1},
-        {"id":4, "name":"Fisica","period":1},
-        {"id":5, "name":"Historia","period":1},
-        {"id":6, "name":"Manutenção preditiva","period":1},
-        {"id":7, "name":"Pesquisa operacional","period":1},
-        {"id":8, "name":"Programação","period":4}
-    ]
+    const { subjects } = useContext(SubjectsContext);    
 
     return(
         <div>
@@ -46,7 +39,6 @@ export default function SubjectsPage(){
             </PageContainer>           
 
         </div>
-
     );
 }
 

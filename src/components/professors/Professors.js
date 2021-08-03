@@ -2,20 +2,13 @@ import Header from "../header/Header";
 import styled from "styled-components";
 import PageContainer from "../page-container/PageContainer";
 import ProfessorTests from "./ProfessorInfo";
+import { useContext } from "react";
+import ProfessorsContext from "../contexts/ProfessorsContext";
 
 
 export default function RegisteredProfessors(){
 
-    const professors = [
-        {"id":1, "name":"Carlos Prado"},
-        {"id":2, "name":"Paulo Oliveira"},
-        {"id":3, "name":"Cesar Augusto"},
-        {"id":4, "name":"Sandra Braga"},
-        {"id":5, "name":"Pedro Sampaio"},
-        {"id":6, "name":"Cassio Fukujima"},
-        {"id":7, "name":"Nagato Sato"},
-        {"id":8, "name":"Lucio Filho"}
-    ]
+    const { professors } = useContext(ProfessorsContext);
 
     return(
         <div>

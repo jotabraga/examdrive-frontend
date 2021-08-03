@@ -9,7 +9,6 @@ export default function ProfessorInfo(props){
 
         <Link to={`/professor-tests/${id}`}>
             <InfoBox>
-                <h2>Provas de {}</h2>
                 <TestRow>                    
                     <h2>{name}</h2>                      
                 </TestRow>

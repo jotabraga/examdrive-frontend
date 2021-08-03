@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export default function SubjectTests(props){
@@ -8,7 +7,6 @@ export default function SubjectTests(props){
     return(
  
             <InfoBox>
-
                 <TestRow href={link}>                    
                     <h2>{subject}</h2> 
                     <h2>{professor}</h2>   

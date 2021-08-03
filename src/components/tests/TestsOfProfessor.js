@@ -9,64 +9,26 @@ import TestInfo from "./TestInfo";
 
 export default function TestsOfProfessor(){
 
-    const { id } = useParams();
-    // const [tests, setTests] = useState([]);
+    const { professorId: id} = useParams();
+    const [tests, setTests] = useState([]);
+ 
+    useEffect(() =>{
 
-    // useEffect(() =>{
+        getProfessorTests(id);
 
-    //     getProfessorTests(id);
+    },[id]);
 
-    // },[id]);
+    async function getProfessorTests(id){       
 
-    // async function getProfessorTests(id){        
+        try {            
+            const response = await axios.get(`${API}/professor-tests/${id}`);
+            if (!response.status === 200) throw new Error(response.status);
+            setTests(response.data);
 
-    //     try {            
-    //         const response = await axios.get(`${API}/professor-tests/${id}`);
-    //         if (!response.status === 200) throw new Error(response.status);
-    //         setTests(response.data);
-
-    //     } catch (error) {
-    //         console.log(error);    
-    //     }
-    // }
-
-    const tests = [{
-        "id": 1,
-        "professorId": 3,
-        "subjectId": 1,
-        "category": "P1",
-        "link": "http://www.uel.br/projetos/matessencial/superior/calc1/provas2005.pdf",
-        "name": "2020.1",
-        "professor": {
-            "id": 3,
-            "name": "Paulo Siqueira"
-        },
-        "subject": {
-            "id": 1,
-            "name": "Calculo I",
-            "period": "1 ano"
+        } catch (error) {
+            console.log(error);    
         }
-    },
-    {
-        "id": 2,
-        "professorId": 3,
-        "subjectId": 1,
-        "category": "P1",
-        "link": "http://www.uel.br/projetos/matessencial/superior/calc1/provas2005.pdf",
-        "name": "2020.1",
-        "professor": {
-            "id": 3,
-            "name": "Paulo Siqueira"
-        },
-        "subject": {
-            "id": 1,
-            "name": "Calculo I",
-            "period": "1 ano"
-        }
-    }];
-
-
-
+    }
 
     return(
         <div>
@@ -76,15 +38,19 @@ export default function TestsOfProfessor(){
 
                 <ContentBox>
 
-                {tests.map((test) => (
-                            <TestInfo
-                                key={test.id}
-                                link={test.link}
-                                subject={test.subject.name}
-                                professor={test.professor.name}
-                                category={test.category}
-                            />
-                        ))}
+                {tests.length === 0 ? (
+                    <h3>Nenhum teste encontrado</h3>
+                ) : (tests.map((test) => 
+                        (<TestInfo
+                            key={test.id}
+                            link={test.link}
+                            subject={test.subject.name}
+                            professor={test.professor.name}
+                            category={test.category}
+                        />)
+                    ))
+                }
+                    
                 
                 </ContentBox>           
                 
@@ -117,4 +83,15 @@ const ContentBox = styled.div`
         font-family: "Passion One";
         font-weight: 400;
     }
+    h3{
+        color: #fff;
+        font-size: 18px;
+        text-align: center;
+        line-height: 40px;
+        height: 40px;
+        margin-left: 10px;
+        margin-right: 30px;
+    }
+
 `
+

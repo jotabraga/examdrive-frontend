@@ -63,7 +63,7 @@ const StyledHeader = styled.div`
     align-items: center;
     background-color: #ef5798;
     color: #fff;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.09);     
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45), 0 6px 20px 0 rgba(0, 0, 0, 0.35);     
     @media (max-width: 611px){
         z-index:5;
         height: 60px;
