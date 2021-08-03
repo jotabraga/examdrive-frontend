@@ -49,8 +49,7 @@ export default function TestsOfProfessor(){
                             category={test.category}
                         />)
                     ))
-                }
-                    
+                }                   
                 
                 </ContentBox>           
                 

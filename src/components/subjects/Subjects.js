@@ -29,7 +29,7 @@ export default function SubjectsPage(){
                             <SubjectTests
                                 key={subject.id}
                                 name={subject.name}
-                                period={subject.period}
+                                period={subject.termId}
                                 id={subject.id}
                             />
                         ))}

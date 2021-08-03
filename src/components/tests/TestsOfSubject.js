@@ -39,15 +39,19 @@ export default function TestsOfSubject(){
 
                 <ContentBox>
 
-                    {tests.map((test) => (
-                        <TestInfo
-                            key={test.id}
-                            link={test.link}
-                            subject={test.subject.name}
-                            professor={test.professor.name}
-                            category={test.category}
-                        />
-                    ))}
+                    {tests.length === 0 ? (
+                        <h3>Nenhum teste encontrado</h3>
+                        ) : (tests.map((test) => (
+                            <TestInfo
+                                key={test.id}
+                                link={test.link}
+                                subject={test.subject.name}
+                                professor={test.professor.name}
+                                category={test.category}
+                            />)
+                        ))
+                    }
+
                 
                 </ContentBox>           
                 
@@ -79,5 +83,14 @@ const ContentBox = styled.div`
         margin-bottom: 15px;
         font-family: "Passion One";
         font-weight: 400;
+    }
+    h3{
+        color: #fff;
+        font-size: 18px;
+        text-align: center;
+        line-height: 40px;
+        height: 40px;
+        margin-left: 10px;
+        margin-right: 30px;
     }
 `
