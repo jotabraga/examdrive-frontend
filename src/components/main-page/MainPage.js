@@ -1,4 +1,5 @@
 import Header from "../header/Header";
+import PageContainer from "../page-container/PageContainer";
 import styled from "styled-components";
 import { useHistory } from "react-router";
 
@@ -23,7 +24,7 @@ export default function MainPage(){
 
             <Header />
 
-            <MainContainer>
+            <PageContainer>
 
                 <TestsOptions>
 
@@ -40,7 +41,7 @@ export default function MainPage(){
 
                 </TestsOptions>
 
-            </MainContainer>
+            </PageContainer>
 
         </div>
     );
@@ -50,8 +51,7 @@ const TestsOptions = styled.div`
     display: flex;
     flex-wrap: wrap;
     width: 100vw;
-    height: 100vh;
-    margin-top: 30px;
+    height: auto;
     justify-content: space-evenly;
     align-items: center;
 
@@ -60,14 +60,6 @@ const TestsOptions = styled.div`
         flex-direction: column;
         justify-content: center;
     }
-`;
-
-const MainContainer = styled.div`
-    background-image: url(https://dev.bravvo.me/brbauen/driven/wp-content/uploads/2021/07/image-75.jpg);
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    background-attachment: fixed;
 `;
 
 const PageServices = styled.div` 
@@ -87,7 +79,7 @@ const PageServices = styled.div`
         font-family: "Passion One";
     }
     @media (max-width: 611px){
-        margin-top: 70px;
+        margin-top: 20px;
         height: 220px;
     }
 `;

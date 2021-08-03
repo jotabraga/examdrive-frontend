@@ -22,7 +22,7 @@ export default function Mission(){
                             <h2>
                                 Nossa missão é contribuir para divulgar materiais úteis no âmbito acadêmico
                                 e fomentar a colaboração mútua entre estudantes que buscam o acesso sem barreiras
-                                ao conhecimento, bem como divulgar materiais de apoio para dar suporte no aprendizado.
+                                ao conhecimento, bem como divulgar materiais de apoio ao aprendizado.
                             </h2>
                         </div>
 

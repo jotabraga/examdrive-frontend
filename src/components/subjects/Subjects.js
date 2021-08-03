@@ -16,7 +16,7 @@ export default function SubjectsPage(){
             <PageContainer>
        
                 {(subjects.length === 0 || subjects === null) ? (
-                    <NoSubjects>Erro ao carregar as provas, tente novamente!</NoSubjects>
+                    <NoSubjects>Erro ao carregar as disciplinas, tente novamente!</NoSubjects>
                 ) : (
 
                     <ContentBox>
