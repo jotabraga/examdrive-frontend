@@ -2,8 +2,12 @@ import Header from "../header/Header";
 import styled from "styled-components";
 import PageContainer from "../page-container/PageContainer";
 import { Link, useHistory } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
+import Select from "./Select";
+import ProfessorsContext from "../contexts/ProfessorsContext";
+import SubjectsContext from "../contexts/SubjectsContext";
+
 
 export default function SubjectsPage(){
 
@@ -13,8 +17,12 @@ export default function SubjectsPage(){
     const [link, setLink] = useState("");
     const [name, setName] = useState("");
     const [disabled, setDisabled] = useState(false);
+    const categories = [{"id":1,"name":'P1'},{"id":2,"name":'P2'},{"id":3,"name":'P3'},
+    {"id":4,"name":'P4'},{"id":5,"name":'Sub'},{"id":6,"name":'Outras'},];
 
     let history = useHistory();
+    const { professors } = useContext(ProfessorsContext);
+    const { subjects } = useContext(SubjectsContext);
 
     function sendTestData(event){
         event.preventDefault();
@@ -45,30 +53,33 @@ export default function SubjectsPage(){
                     </div>
 
                     <input
-                        type="number"
-                        required
-                        placeholder="Professor"
-                        disabled={disabled}
-                        value={professorId}
-                        onChange={(e) => setProfessor(e.target.value)}
-                    />
-
-                    <input
-                        type="number"
-                        required
-                        placeholder="Assunto"
-                        disabled={disabled}
-                        value={subjectId}
-                        onChange={(e) => setSubject(e.target.value)}
-                    />
-
-                    <input
                         type="text"
                         required
-                        placeholder="Categoria"
+                        placeholder="Nome"
                         disabled={disabled}
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
+
+                    <Select
+                        options={['Selecione a categoria', ...categories]}
+                        required
                         value={category}
-                        onChange={(e) => setCategory(e.target.value)}
+                        setValue={setCategory}
+                    />
+
+                    <Select
+                        options={['Selecione a disciplina', ...subjects]}
+                        required
+                        value={subjectId}
+                        setValue={setSubject}
+                    />
+
+                    <Select
+                        options={['Selecione o professor', ...professors]}
+                        required
+                        value={professorId}
+                        setValue={setProfessor}
                     />
 
                     <input
@@ -80,14 +91,7 @@ export default function SubjectsPage(){
                         onChange={(e) => setLink(e.target.value)}
                     />
 
-                    <input
-                        type="text"
-                        required
-                        placeholder="Nome"
-                        disabled={disabled}
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    />
+
 
                     <SelectAction register onclick={() => history.push("/")}>Registrar</SelectAction>
 
