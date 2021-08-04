@@ -130,15 +130,31 @@ export default function SubjectsPage(){
                         required
                         value={professorId}
                         setValue={setProfessor}
-                    />
+                    />  
 
-                    <FileInput
-                        type="file"
-                        required
-                        disabled={disabled}
-                        onChange={(e) => setLink(e.target.files[0])}
-                    />
+                    <FileSendOptions>
 
+                        <FileInput
+                            type="file"
+                            title="Enviar .pdf"
+                            required
+                            disabled={disabled}
+                            onChange={(e) => setLink(e.target.files[0])}
+                        />
+
+                        <h2>Ou</h2>
+                    
+                        <FileInput
+                            type="text"
+                            required
+                            placeholder="Link URL"
+                            disabled={disabled}
+                            value={link}
+                            onChange={(e) => setLink(e.target.value)}
+                        /> 
+                        
+                    </FileSendOptions>          
+           
                     <SelectAction register onclick={() => history.push("/")}>Registrar</SelectAction>
 
                     <Link to={"/"}>
@@ -152,8 +168,7 @@ export default function SubjectsPage(){
     );
 }
 
-const FileInput = styled.select` 
-    width: 100%;
+const FileInput = styled.input` 
     background: #fff;
     margin-top: 10px;
     font-size: 18px;
@@ -163,6 +178,12 @@ const FileInput = styled.select`
     height: 40px;
     color: #9F9F9F; 
     padding-left: 13px;
+`
+
+const FileSendOptions = styled.div` 
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 `
 
 const ContentBox = styled.form`
@@ -187,6 +208,14 @@ const ContentBox = styled.form`
         margin-bottom: 15px;
         font-family: "Passion One";
         font-weight: 400;
+    }
+    h2{
+        color: #fff;
+        font-size: 18px;
+        font-weight: 400;
+        margin-top: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
     }
     input{
         width: 100%;
