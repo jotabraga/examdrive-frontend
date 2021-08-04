@@ -38,18 +38,22 @@ export default function TestsOfProfessor(){
 
                 <ContentBox>
 
-                {tests.length === 0 ? (
-                    <h3>Nenhum teste encontrado</h3>
-                ) : (tests.map((test) => 
-                        (<TestInfo
-                            key={test.id}
-                            link={test.link}
-                            subject={test.subject.name}
-                            professor={test.professor.name}
-                            category={test.category}
-                        />)
-                    ))
-                }                   
+                    {tests.length === 0 ? (
+
+                        <h3>Nenhum teste encontrado</h3>
+
+                    ) : (tests.map((test) => 
+
+                            (<TestInfo
+                                key={test.id}
+                                link={test.link}
+                                subject={test.subject.name}
+                                professor={test.professor.name}
+                                category={test.category}
+                            />)
+                            
+                        ))
+                    }                   
                 
                 </ContentBox>           
                 

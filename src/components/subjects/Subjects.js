@@ -2,12 +2,22 @@ import Header from "../header/Header";
 import styled from "styled-components";
 import PageContainer from "../page-container/PageContainer";
 import SubjectTests from "./SubjectTests";
-import SubjectsContext from "../contexts/SubjectsContext";
-import { useContext } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { API } from "../config/api";
 
 export default function SubjectsPage(){
 
-    const { subjects } = useContext(SubjectsContext);    
+    const [subjects, setSubjects] = useState([]);
+
+    useEffect(() => {
+        getSubjects();
+      }, []);
+   
+    async function getSubjects(){
+    const request = await axios.get(`${API}/subjects`);
+    setSubjects(request.data);    
+    }
 
     return(
         <div>

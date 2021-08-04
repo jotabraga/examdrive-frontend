@@ -2,13 +2,22 @@ import Header from "../header/Header";
 import styled from "styled-components";
 import PageContainer from "../page-container/PageContainer";
 import ProfessorTests from "./ProfessorInfo";
-import { useContext } from "react";
-import ProfessorsContext from "../contexts/ProfessorsContext";
-
+import { useState, useEffect } from "react";
+import { API } from "../config/api";
+import axios from "axios";
 
 export default function RegisteredProfessors(){
 
-    const { professors } = useContext(ProfessorsContext);
+    const [professors, setProfessors] = useState([]);
+
+    useEffect(() => {
+        getProfessors();
+      }, []);
+   
+    async function getProfessors(){
+        const request = await axios.get(`${API}/professors`);
+        setProfessors(request.data);
+      }
 
     return(
         <div>

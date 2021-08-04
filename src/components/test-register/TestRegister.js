@@ -2,44 +2,93 @@ import Header from "../header/Header";
 import styled from "styled-components";
 import PageContainer from "../page-container/PageContainer";
 import { Link, useHistory } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Select from "./Select";
-import ProfessorsContext from "../contexts/ProfessorsContext";
-import SubjectsContext from "../contexts/SubjectsContext";
-
+import { API } from "../config/api";
+import { Storage } from "aws-amplify";
 
 export default function SubjectsPage(){
 
-    const [professorId, setProfessor] = useState("");
-    const [subjectId, setSubject] = useState("");
-    const [category, setCategory] = useState("");
+    const [professors, setProfessors] = useState([]);
+    const [professorId, setProfessor] = useState([]);
+
+    const [subjects, setSubjects] = useState([]);
+    const [subjectId, setSubject] = useState(null);
+
+    const [categories, setCategories] = useState([]);
+    const [categoryId, setCategory] = useState("");
+
     const [link, setLink] = useState("");
-    const [name, setName] = useState("");
     const [disabled, setDisabled] = useState(false);
-    const categories = [{"id":1,"name":'P1'},{"id":2,"name":'P2'},{"id":3,"name":'P3'},
-    {"id":4,"name":'P4'},{"id":5,"name":'Sub'},{"id":6,"name":'Outras'},];
+    const [name, setName] = useState("");
+
 
     let history = useHistory();
-    const { professors } = useContext(ProfessorsContext);
-    const { subjects } = useContext(SubjectsContext);
 
-    function sendTestData(event){
+    useEffect(() => {
+        axios
+            .get(`${API}/categories`)
+            .then((res) => {
+                setCategories(res.data);
+            })
+    }, []);
+
+    useEffect(() => {
+        axios
+            .get(`${API}/subjects`)
+            .then((res) => {
+                setSubjects(res.data);
+            })
+    }, []);
+
+    useEffect(() => {
+        setProfessors([]);
+        
+        if(subjectId){
+            getProfessorsBySubject(subjectId);
+        }
+
+    }, [subjectId]);
+
+
+    async function getProfessorsBySubject(subjectId){
+        axios
+        .get(`${API}/professors/${subjectId}`)
+        .then((res) => {
+            setProfessors(res.data);            
+        })
+        .catch((error) => {
+            alert('Erro no servidor, tente novamente');
+            console.log(error);
+        })
+    }
+
+    async function sendTestData(event){
+
         event.preventDefault();
         setDisabled(true);
+        const key = `${name}.pdf`
 
-        const body = {professorId, subjectId, category, link, name};
-
-        const request = axios.post("https://API/register-test",body);
-        
-        request.then((answer) => {
-            history.push("/test-register");
+        try{
+            await Storage.put(key, link, {
+                contentDisposition: 'inline',
+                contentType: 'application/pdf',
             });
-        
-        request.catch((error) => {
+
+            const body = {
+                professorId, 
+                subjectId, 
+                categoryId,
+                link: `${process.env.REACT_APP_FILE_REPO}/${key}`, 
+                name
+            };
+            await axios.post(`${API}/register-test`,body);                
+
+        } catch(error){
             console.log(error);
             history.push("/test-register");
-        });
+        }        
     }
 
     return(
@@ -47,7 +96,7 @@ export default function SubjectsPage(){
             <Header />
 
             <PageContainer>
-                <ContentBox onSubmit={sendTestData}>
+                <ContentBox onSubmit={sendTestData} disabled={disabled}>
                     <div>
                         <h1>Compartilhe uma prova</h1>
                     </div>
@@ -64,7 +113,7 @@ export default function SubjectsPage(){
                     <Select
                         options={['Selecione a categoria', ...categories]}
                         required
-                        value={category}
+                        value={categoryId}
                         setValue={setCategory}
                     />
 
@@ -76,22 +125,19 @@ export default function SubjectsPage(){
                     />
 
                     <Select
+                        disabled={subjects.length === 0}
                         options={['Selecione o professor', ...professors]}
                         required
                         value={professorId}
                         setValue={setProfessor}
                     />
 
-                    <input
-                        type="text"
+                    <FileInput
+                        type="file"
                         required
-                        placeholder="Link"
                         disabled={disabled}
-                        value={link}
-                        onChange={(e) => setLink(e.target.value)}
+                        onChange={(e) => setLink(e.target.files[0])}
                     />
-
-
 
                     <SelectAction register onclick={() => history.push("/")}>Registrar</SelectAction>
 
@@ -106,6 +152,19 @@ export default function SubjectsPage(){
     );
 }
 
+const FileInput = styled.select` 
+    width: 100%;
+    background: #fff;
+    margin-top: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+    line-height: 40px;
+    height: 40px;
+    color: #9F9F9F; 
+    padding-left: 13px;
+`
+
 const ContentBox = styled.form`
     width: 50%;
     padding:20px;
@@ -115,7 +174,7 @@ const ContentBox = styled.form`
     flex-direction: column;
     justify-content: center;
     align-items: space-between;
-    opacity: 0.8;
+    opacity: 0.95;  
     border-radius: 8px;
     div{
         width: 100%;
