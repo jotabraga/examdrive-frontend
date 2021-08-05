@@ -19,7 +19,9 @@ export default function SubjectsPage(){
     const [categories, setCategories] = useState([]);
     const [categoryId, setCategory] = useState("");
 
-    const [link, setLink] = useState("");
+    const [file, setFile] = useState(null);
+    const [url, setUrl] = useState(null);
+
     const [disabled, setDisabled] = useState(false);
     const [name, setName] = useState("");
 
@@ -65,25 +67,36 @@ export default function SubjectsPage(){
     }
 
     async function sendTestData(event){
-
         event.preventDefault();
         setDisabled(true);
-        const key = `${name}.pdf`
 
-        try{
-            await Storage.put(key, link, {
+        let testUrl = "";
+
+        if(file !== null){
+            const key = `${name}.pdf`;
+            await Storage.put(key, file, { //upload of the file to aws s3 bucket cloud storage
                 contentDisposition: 'inline',
                 contentType: 'application/pdf',
-            });
+            });    
+            const newFileUrl = `${process.env.REACT_APP_FILE_REPO}/${key}`;
+            testUrl = newFileUrl; 
 
+        } else if(url !== null){
+            testUrl = url;
+        }
+
+
+        try{
             const body = {
-                professorId, 
-                subjectId, 
-                categoryId,
-                link: `${process.env.REACT_APP_FILE_REPO}/${key}`, 
-                name
+                professorId: parseInt(professorId), 
+                subjectId: parseInt(subjectId), 
+                categoryId: parseInt(categoryId),
+                link: testUrl, 
+                name: name
             };
-            await axios.post(`${API}/register-test`,body);                
+            await axios.post(`${API}/register-test`,body);  
+            alert('Prova cadastrada com sucesso!');
+            history.push("/");              
 
         } catch(error){
             console.log(error);
@@ -136,21 +149,19 @@ export default function SubjectsPage(){
 
                         <FileInput
                             type="file"
-                            title="Enviar .pdf"
-                            required
+                            title="Enviar .pdf"                            
                             disabled={disabled}
-                            onChange={(e) => setLink(e.target.files[0])}
+                            onChange={(e) => setFile(e.target.files[0])}
                         />
 
                         <h2>Ou</h2>
                     
                         <FileInput
                             type="text"
-                            required
                             placeholder="Link URL"
                             disabled={disabled}
-                            value={link}
-                            onChange={(e) => setLink(e.target.value)}
+                            value={url}
+                            onChange={(e) => setUrl(e.target.value)}
                         /> 
                         
                     </FileSendOptions>          
