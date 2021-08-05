@@ -5,9 +5,9 @@ export default function Select (props) {
 	const { setValue, options } = props;
 	return (
 
-		<StyledSelect {...props} disabled={props.disabled} onChange={(e) => setValue(e.target.value)}>
+		<StyledSelect {...props} disabled={props.disabled} multiple={false} onChange={(e) => setValue(e.target.value)}>
 			{options.map((option, index) => (
-				<option key={index} value={index ? option.id : 0}>
+				<option key={index} value={index ? option.id : undefined}>
 					{index ? option.name : option}
 				</option>
 			))}

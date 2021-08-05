@@ -11,13 +11,13 @@ import { Storage } from "aws-amplify";
 export default function SubjectsPage(){
 
     const [professors, setProfessors] = useState([]);
-    const [professorId, setProfessor] = useState([]);
+    const [professorId, setProfessor] = useState('');
 
     const [subjects, setSubjects] = useState([]);
-    const [subjectId, setSubject] = useState(null);
+    const [subjectId, setSubject] = useState('');
 
     const [categories, setCategories] = useState([]);
-    const [categoryId, setCategory] = useState("");
+    const [categoryId, setCategory] = useState('');
 
     const [file, setFile] = useState(null);
     const [url, setUrl] = useState(null);
