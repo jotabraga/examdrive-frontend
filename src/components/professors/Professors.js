@@ -34,11 +34,12 @@ export default function RegisteredProfessors(){
                             <h1>Professores</h1>
                         </div>
 
-                        {professors.map((subject) => (
+                        {professors.map((professor) => (
                             <ProfessorTests
-                                key={subject.id}
-                                name={subject.name}
-                                id={subject.id}
+                                key={professor.id}
+                                name={professor.name}
+                                testsCount={professor.testsCount}                                
+                                id={professor.id}
                             />
                         ))}
                     </ContentBox>

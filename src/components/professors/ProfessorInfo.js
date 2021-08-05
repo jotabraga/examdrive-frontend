@@ -3,14 +3,15 @@ import styled from "styled-components";
 
 export default function ProfessorInfo(props){
 
-    const {id, name} = props;
+    const {id, name, testsCount} = props;
 
     return(
 
         <Link to={`/professor-tests/${id}`}>
             <InfoBox>
                 <TestRow>                    
-                    <h2>{name}</h2>                      
+                    <h2>{name}</h2>
+                    {testsCount > 1 ? (<h2>({testsCount} Provas)</h2>):(<h2>({testsCount} Prova)</h2>)}                 
                 </TestRow>
             </InfoBox>
         </Link> 
