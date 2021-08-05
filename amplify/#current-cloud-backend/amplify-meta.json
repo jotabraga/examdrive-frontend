@@ -1,0 +1,51 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-projectrepoprovas-dev-232906-authRole",
+      "UnauthRoleArn": "arn:aws:iam::152243568294:role/amplify-projectrepoprovas-dev-232906-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::152243568294:role/amplify-projectrepoprovas-dev-232906-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-projectrepoprovas-dev-232906-deployment",
+      "UnauthRoleName": "amplify-projectrepoprovas-dev-232906-unauthRole",
+      "StackName": "amplify-projectrepoprovas-dev-232906",
+      "StackId": "arn:aws:cloudformation:us-east-1:152243568294:stack/amplify-projectrepoprovas-dev-232906/c0040740-f4cb-11eb-9744-0a9bf4500c63",
+      "AmplifyAppId": "d1sr5zwvzv1koj"
+    }
+  },
+  "auth": {
+    "projectrepoprovas0dd4eeb7": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-projectrepoprovas-dev-232906-deployment/amplify-cfn-templates/auth/projectrepoprovas0dd4eeb7-cloudformation-template.yml",
+        "logicalId": "authprojectrepoprovas0dd4eeb7"
+      },
+      "lastPushTimeStamp": "2021-08-04T02:41:37.042Z",
+      "output": {
+        "UserPoolId": "us-east-1_sv0cuJc0p",
+        "AppClientIDWeb": "7t4nk7ke5hedn8jpplmo5t0ipd",
+        "AppClientID": "4v41a2o3062nrt2ntf6286gclc",
+        "IdentityPoolId": "us-east-1:0968fe1f-2671-41a6-a5ee-bf10ebf9fd1d",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:152243568294:userpool/us-east-1_sv0cuJc0p",
+        "IdentityPoolName": "projectrepoprovas0dd4eeb7_identitypool_0dd4eeb7__dev",
+        "UserPoolName": "projectrepoprovas0dd4eeb7_userpool_0dd4eeb7"
+      },
+      "lastPushDirHash": "IcnWVYrs/vn53hmT/ZL8qZptM7g="
+    }
+  },
+  "storage": {
+    "projectrepoprovas55f2728f": {
+      "service": "S3",
+      "serviceType": "imported",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "output": {
+        "BucketName": "amplify-projectrepoprovas-dev-232906-deployment",
+        "Region": "us-east-1"
+      },
+      "lastPushTimeStamp": "2021-08-04T02:41:37.074Z"
+    }
+  }
+}
