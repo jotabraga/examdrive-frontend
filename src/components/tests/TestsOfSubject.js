@@ -47,7 +47,7 @@ export default function TestsOfSubject(){
                                 link={test.link}
                                 subject={test.subject.name}
                                 professor={test.professor.name}
-                                category={test.category}
+                                category={test.category.name}
                             />)
                         ))
                     }
@@ -93,4 +93,9 @@ const ContentBox = styled.div`
         margin-left: 10px;
         margin-right: 30px;
     }
+    @media (max-width: 611px){
+        width: 90%;
+        h1{
+            font-size: 20px;
+        }
 `

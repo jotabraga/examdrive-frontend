@@ -26,10 +26,11 @@ const Content = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 60px;
+    margin-top: 120px;
 
     @media (max-width: 611px) {
         width: 100vw;
+        margin-top: 50px;
     }
 `;
 

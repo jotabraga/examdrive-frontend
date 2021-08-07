@@ -64,7 +64,8 @@ const StyledHeader = styled.div`
     background-color: #ef5798;
     color: #fff;
     border-bottom: 0.4px solid #000;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45), 0 6px 20px 0 rgba(0, 0, 0, 0.35);     
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45), 0 6px 20px 0 rgba(0, 0, 0, 0.35);   
+    z-index: 15;  
     @media (max-width: 611px){
         z-index:5;
         height: 60px;

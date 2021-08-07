@@ -23,7 +23,7 @@ const MenuContainer = styled.div`
     background: transparent;
     width: 100vw;
     height: auto;
-    z-index: 10;
+    z-index: 20;
 
     @media (max-width: 611px){
         top: 40px;
@@ -46,5 +46,10 @@ const StyledMenu = styled.div`
     font-weight: bold;
     h2: hover{
         color: #000;
+    }
+    @media (max-width: 611px){
+        font-size: 16px;
+        flex-direction: row;
+        height: 60px;
     }
 `

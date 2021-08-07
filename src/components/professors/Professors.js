@@ -56,6 +56,7 @@ const NoProfessors = styled.h1`
     font-family: "Lato";
     font-size: 30px;
     color: #000;
+    text-align: center;
 `
 
 const ContentBox = styled.div`
@@ -81,4 +82,9 @@ const ContentBox = styled.div`
         font-family: "Passion One";
         font-weight: 400;
     }
+    @media (max-width: 611px){
+        width: 90%;
+        h1{
+            font-size: 20px;
+        }
 `

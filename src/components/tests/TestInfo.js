@@ -40,4 +40,11 @@ const TestRow = styled.a`
         margin-left: 10px;
         margin-right: 30px;
     }
+    @media (max-width: 611px){
+        
+        h2{
+            font-size: 15px;
+            overflow: hidden;
+        }
+    }
 `;

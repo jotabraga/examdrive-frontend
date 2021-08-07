@@ -240,6 +240,9 @@ const ContentBox = styled.form`
         color: #9F9F9F; 
         padding-left: 13px; 
     }
+    @media (max-width: 611px){
+        width: 90%;
+    }
 `
 
 const SelectAction = styled.button` 

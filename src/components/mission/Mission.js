@@ -66,4 +66,9 @@ const ContentBox = styled.div`
         color: #fff;
         line-height: 30px;
     }
+    @media (max-width: 611px){
+        width: 90%;
+        text-align: center;
+        margin-top: 50px;
+    }
 `
