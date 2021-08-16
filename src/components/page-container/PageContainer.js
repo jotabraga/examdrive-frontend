@@ -12,12 +12,12 @@ export default function PageContainer({ children }){
 const MainContainer = styled.div`
     width: 100vw;
     height: 100vh;  
-    padding-top: 80px;
+    padding-top: 20px;
     background: rgb(238,174,202);
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 
     @media (max-width: 611px) {
-        padding-top: 40px;
+        padding-top: 55px;
     }
 `;
 

@@ -199,7 +199,7 @@ const FileSendOptions = styled.div`
 
 const ContentBox = styled.form`
     width: 50%;
-    padding:20px;
+    padding: 15px;
     height: auto;
     background: #000;
     display: flex;
