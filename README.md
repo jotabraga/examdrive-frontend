@@ -1,5 +1,5 @@
 # Exam drive :memo:
-> Get a great help of exams of past years :mortar_board:
+Get a great help of exams of past years :mortar_board:
 ## Preview 👀
 ![Repoprovas preview](./src/assets/preview.gif) 
 #### [Click here and try it now!](https://project-repo-provas-front-end.vercel.app/)
@@ -17,7 +17,7 @@ This is an web aplication wich students can share their old tests and find the o
 - [ ] Sign up
 - [ ] Log in
 - [ ] Register a professor/subject
-## Tech tools 🖥️
+## Tech tools 🔧
 The following tools and frameworks were used in the construction of the project:<br>
 <p>
   <img style='margin: 5px;' src='https://img.shields.io/badge/styled-components%20-%2320232a.svg?&style=for-the-badge&color=b8679e&logo=styled-components&logoColor=%3a3a3a'>
@@ -27,7 +27,7 @@ The following tools and frameworks were used in the construction of the project:
   <img style='margin: 5px;' src='https://img.shields.io/badge/react-icons%20-%2320232a.svg?&style=for-the-badge&color=f28dc7&logo=react-icons&logoColor=%2361DAFB'>
 </p>
 
-## How to run
+## How to run ⚙️
 
 1. Clone this repository
 2. Clone the [back-end repository](https://github.com/jotabraga/examdrive-backend)
