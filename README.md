@@ -1,5 +1,5 @@
 # Exam drive :memo:
-Get a great help of exams of past years :mortar_board:
+A helpful tool to get exams and useful material of past years :mortar_board:
 ## Preview 👀
 ![Repoprovas preview](./src/assets/preview.gif) 
 #### [Click here and try it now!](https://project-repo-provas-front-end.vercel.app/)
