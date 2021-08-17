@@ -6,58 +6,54 @@ import { useState, useEffect } from "react";
 import { API } from "../config/api";
 import axios from "axios";
 
-export default function RegisteredProfessors(){
+export default function RegisteredProfessors() {
+  const [professors, setProfessors] = useState([]);
 
-    const [professors, setProfessors] = useState([]);
+  useEffect(() => {
+    getProfessors();
+  }, []);
 
-    useEffect(() => {
-        getProfessors();
-      }, []);
-   
-    async function getProfessors(){
-        const request = await axios.get(`${API}/professors`);
-        setProfessors(request.data);
-      }
+  async function getProfessors() {
+    const request = await axios.get(`${API}/professors`);
+    setProfessors(request.data);
+  }
 
-    return(
-        <div>
-            <Header />
+  return (
+    <div>
+      <Header />
 
-            <PageContainer>
-       
-                {(professors.length === 0 || professors === null) ? (
-                    <NoProfessors>Erro ao carregar os professores, tente novamente!</NoProfessors>
-                ) : (
+      <PageContainer>
+        {professors.length === 0 || professors === null ? (
+          <NoProfessors>
+            Erro ao carregar os professores, tente novamente!
+          </NoProfessors>
+        ) : (
+          <ContentBox>
+            <div>
+              <h1>Professores</h1>
+            </div>
 
-                    <ContentBox>
-                        <div>
-                            <h1>Professores</h1>
-                        </div>
-
-                        {professors.map((professor) => (
-                            <ProfessorTests
-                                key={professor.id}
-                                name={professor.name}
-                                testsCount={professor.testsCount}                                
-                                id={professor.id}
-                            />
-                        ))}
-                    </ContentBox>
-                )}
-                
-            </PageContainer>           
-
-        </div>
-
-    );
+            {professors.map((professor) => (
+              <ProfessorTests
+                key={professor.id}
+                name={professor.name}
+                testsCount={professor.testsCount}
+                id={professor.id}
+              />
+            ))}
+          </ContentBox>
+        )}
+      </PageContainer>
+    </div>
+  );
 }
 
-const NoProfessors = styled.h1` 
-    font-family: "Lato";
-    font-size: 30px;
-    color: #000;
-    text-align: center;
-`
+const NoProfessors = styled.h1`
+  font-family: "Lato";
+  font-size: 30px;
+  color: #000;
+  text-align: center;
+`;
 
 const ContentBox = styled.div`
     width: 50%;
@@ -87,4 +83,4 @@ const ContentBox = styled.div`
         h1{
             font-size: 20px;
         }
-`
+`;

@@ -7,58 +7,47 @@ import axios from "axios";
 import { API } from "../config/api";
 import TestInfo from "./TestInfo";
 
-export default function TestsOfSubject(){
+export default function TestsOfSubject() {
+  const { subjectId: id } = useParams();
+  const [tests, setTests] = useState([]);
 
-    const { subjectId: id } = useParams();
-    const [tests, setTests] = useState([]);
+  useEffect(() => {
+    getSubjectTests(id);
+  }, [id]);
 
-    useEffect(() =>{
-
-        getSubjectTests(id);
-
-    },[id]);
-
-    async function getSubjectTests(id){        
-
-        try {            
-            const response = await axios.get(`${API}/subject-tests/${id}`);
-            if (!response.status === 200) throw new Error(response.status);
-            setTests(response.data);
-
-        } catch (error) {
-            console.log(error);    
-        }
+  async function getSubjectTests(id) {
+    try {
+      const response = await axios.get(`${API}/subject-tests/${id}`);
+      if (!response.status === 200) throw new Error(response.status);
+      setTests(response.data);
+    } catch (error) {
+      console.log(error);
     }
+  }
 
- 
-    return(
-        <div>
-            <Header />
+  return (
+    <div>
+      <Header />
 
-            <PageContainer>
-
-                <ContentBox>
-
-                    {tests.length === 0 ? (
-                        <h3>Nenhum teste encontrado</h3>
-                        ) : (tests.map((test) => (
-                            <TestInfo
-                                key={test.id}
-                                link={test.link}
-                                subject={test.subject.name}
-                                professor={test.professor.name}
-                                category={test.category.name}
-                            />)
-                        ))
-                    }
-
-                
-                </ContentBox>           
-                
-            </PageContainer>           
-
-        </div>
-    );
+      <PageContainer>
+        <ContentBox>
+          {tests.length === 0 ? (
+            <h3>Nenhum teste encontrado</h3>
+          ) : (
+            tests.map((test) => (
+              <TestInfo
+                key={test.id}
+                link={test.link}
+                subject={test.subject.name}
+                professor={test.professor.name}
+                category={test.category.name}
+              />
+            ))
+          )}
+        </ContentBox>
+      </PageContainer>
+    </div>
+  );
 }
 
 const ContentBox = styled.div`
@@ -98,4 +87,4 @@ const ContentBox = styled.div`
         h1{
             font-size: 20px;
         }
-`
+`;
