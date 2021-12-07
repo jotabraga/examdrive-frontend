@@ -17,6 +17,8 @@ This is an web aplication wich students can share their old tests and find the o
 - [ ] Sign up
 - [ ] Log in
 - [ ] Register a professor/subject
+- [ ] Delete tests
+- [ ] Add college info
 ## Tech tools 🔧
 The following tools and frameworks were used in the construction of the project:<br>
 <p>
